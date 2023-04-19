@@ -102,92 +102,142 @@ $("#icon-menu").click(function () {
 // setting up firebase with our website
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyC80QsCY59C7U2VzkELvrnY6jrycLiczjI",
-  authDomain: "fir-wddm-d1804.firebaseapp.com",
-  projectId: "fir-wddm-d1804",
-  storageBucket: "fir-wddm-d1804.appspot.com",
-  messagingSenderId: "849060951078",
-  appId: "1:849060951078:web:5e8a989f9934b6d36ce2e7",
-  measurementId: "G-63F30E1G28"
+  apiKey: "AIzaSyCYdPisfkCcLxPuzy-jM2UQRvORxPq5olk",
+  authDomain: "film-bucket-v3.firebaseapp.com",
+  databaseURL: "https://film-bucket-v3-default-rtdb.firebaseio.com",
+  projectId: "film-bucket-v3",
+  storageBucket: "film-bucket-v3.appspot.com",
+  messagingSenderId: "717415814149",
+  appId: "1:717415814149:web:992815ffeae3bca17e386c",
 });
 
-const db = firebaseApp.firestore();
+var SignUpFormDB = firebase.database().ref("SignUpForm");
+
+function submitForm(event) {
+  //Get ref for fields inside the form
+  var firstname = document.getElementById("firstname").value;
+  var lastname = document.getElementById("lastname").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var agerange = document.getElementById("agerange").value;
+  var occupation = document.getElementById("occupation").value;
+  var dateofbirth = document.getElementById("dateofbirth").value;
+
+  saveData(
+    firstname,
+    lastname,
+    email,
+    password,
+    agerange,
+    occupation,
+    dateofbirth
+  );
+  console.log(firstname);
+}
+
+const saveData = (
+  firstname,
+  lastname,
+  email,
+  password,
+  agerange,
+  occupation,
+  dateofbirth
+) => {
+  //Push this array onto our database
+  var newContactForm = SignUpFormDB.push();
+
+  //Set the values of the array
+  //to name, email, and message content
+  newContactForm.set({
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    password: password,
+    agerange: agerange,
+    occupation: occupation,
+    dateofbirth: dateofbirth,
+  });
+};
+
 const auth = firebaseApp.auth();
 
-//google 
+//google
 const SignInWithGoogleButton = document.getElementById("google-btn");
 const SignInWithFacebookButton = document.getElementById("facebook-btn");
 
 const signInWithGoogle = () => {
-
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(googleProvider)
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  auth
+    .signInWithPopup(googleProvider)
     .then((result) => {
-        document.write("You are Signed Up")
-        console.log(result)
+      document.write("You are Signed Up");
+      console.log(result);
     })
     .catch((error) => {
-        console.log(error.code);
-        console.log(error.message)
-        // ..
+      console.log(error.code);
+      console.log(error.message);
+      // ..
     });
-}
+};
 
-SignInWithGoogleButton.addEventListener('click', signInWithGoogle);
+SignInWithGoogleButton.addEventListener("click", signInWithGoogle);
 
 //github
-const signInWithGithub = () =>{
-
-    const githubProvider = new firebase.auth.GithubAuthProvider();
-    auth.signInWithPopup(githubProvider)
+const signInWithGithub = () => {
+  const githubProvider = new firebase.auth.GithubAuthProvider();
+  auth
+    .signInWithPopup(githubProvider)
     .then((result) => {
-        document.write("You are Signed Up")
-        console.log(result)
+      document.write("You are Signed Up");
+      console.log(result);
     })
     .catch((error) => {
-        console.log(error.code);
-        console.log(error.message)
-        // ..
+      console.log(error.code);
+      console.log(error.message);
+      // ..
     });
-}
+};
 
-SignInWithFacebookButton.addEventListener('click', signInWithGithub);
-
-
+SignInWithFacebookButton.addEventListener("click", signInWithGithub);
 
 // Sign up function
 const signUp = () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    console.log(email, password)
-    // firebase code
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((result) => {
-            // Signed in 
-            document.write("You are Signed Up")
-            console.log(result)
-            // ...
-        })
-        .catch((error) => {
-            console.log(error.code);
-            console.log(error.message)
-            // ..
-        });
-}
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  console.log(email, password);
+  // firebase code
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      // Signed in
+      document.write("You are Signed Up");
+      console.log(result);
+      // ...
+    })
+    .catch((error) => {
+      console.log(error.code);
+      console.log(error.message);
+      // ..
+    });
+};
 
 // Sign In function
 const signIn = () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    // firebase code
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((result) => {
-            // Signed in 
-            document.write("You are Signed In")
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error.code);
-            console.log(error.message)
-        });
-}
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  // firebase code
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      // Signed in
+      document.write("You are Signed In");
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error.code);
+      console.log(error.message);
+    });
+}; //Creating db location reference
