@@ -160,7 +160,7 @@ footer{
     background-color: #2B0504;
     border-radius: 2%;
     gap: 10px;
-    height: 80vh;
+    height: 800px;
     width: 50vw;
     justify-content: center;
     padding-left: 20px;
@@ -168,9 +168,28 @@ footer{
     padding-bottom: 20px;
 }
 
+.grid{
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: .1fr .5fr 1fr;
+
+
+}
+button.btn.d-flex{
+    height: fit-content;
+    background-color: var(--on-primary);
+    border-radius: 1.1rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .heading-row {
     display: flex;
     justify-content: center;
+}
+
+#imageName {
+    border-radius: 10px;
 }
 
 .column-one {
