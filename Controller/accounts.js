@@ -164,14 +164,14 @@ const auth = firebaseApp.auth();
 
 //google
 const SignInWithGoogleButton = document.getElementById("google-btn");
-const SignInWithFacebookButton = document.getElementById("facebook-btn");
+const SignInWithHithubButton = document.getElementById("github-btn");
 
 const signInWithGoogle = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   auth
     .signInWithPopup(googleProvider)
     .then((result) => {
-      document.write("You are Signed Up");
+      window.location.href = "http://localhost:3000/register";
       console.log(result);
     })
     .catch((error) => {
@@ -189,7 +189,7 @@ const signInWithGithub = () => {
   auth
     .signInWithPopup(githubProvider)
     .then((result) => {
-      document.write("You are Signed Up");
+      window.location.href = "http://localhost:3000/register";
       console.log(result);
     })
     .catch((error) => {
@@ -199,7 +199,7 @@ const signInWithGithub = () => {
     });
 };
 
-SignInWithFacebookButton.addEventListener("click", signInWithGithub);
+SignInWithHithubButton.addEventListener("click", signInWithGithub);
 
 // Sign up function
 const signUp = () => {
