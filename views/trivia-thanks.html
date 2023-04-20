@@ -68,18 +68,43 @@
         <!--Overlay div used to create opacity layer between slide menu and page content *See styling in CSS file under Slide Menu styling* -->
         <div class="wrapper">
           <div class="inner-wrapper">
-            <h2>Thank you for playing!</h2>
+              <div class="grid">
+                <div class="thanks"> <div>
+                  <h2>Thank you for you playing!</h2>
+                </div> 
+              </div>
+                <div class="copy"> <p>Introducing our latest feature - the ability to upload images of your favorite movie scenes!
 
-            <h3>Your answers have been submitted.</h3>
-        
+                  With just a few clicks, you can easily share your favorite movie moments with the world. Whether it's a funny scene that always makes you laugh, a heartwarming moment that brings tears to your eyes, or an action-packed sequence that leaves you on the edge of your seat, you can now showcase your cinematic passion like never before.</p>
+                
+              <p>So what are you waiting for? Start uploading your favorite movie scenes today and join the conversation with movie lovers from all around the world.</p> </div>
+                <div class="upload">
+                  <div class="text-center">
+                    
+                    <input type="file" id="fileupload" class="btn btn-danger text-light"  value="Choose Images">
+                  
+                  </div>
+                  <div class="text-center">
 
-            
+                    <progress hidden  max="100" value="0" id="uploader"></progress>
+                  </div>
+                  <br>
+                  <div class="text-center"><button class="btn btn-danger text-light" id="submitbtn">Upload File</button></div>
+                  <br>
+                  <div class="text-center">
+                    
+                   <input hidden type="text" id="imageName" />
+                  </div>
+               
+          
 
+                </div>
+  
+                
 
+                </div>
 
-
-
-
+              </div>
           </div>
         </div>
         
@@ -101,7 +126,26 @@
 
 
 <script src="/jquery.js"></script>
-<script src="/Controller/trivia.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script>
+         const firebaseConfig = {
+          apiKey: "AIzaSyCYdPisfkCcLxPuzy-jM2UQRvORxPq5olk",
+  authDomain: "film-bucket-v3.firebaseapp.com",
+  databaseURL: "https://film-bucket-v3-default-rtdb.firebaseio.com/",
+  projectId: "film-bucket-v3",
+  storageBucket: "film-bucket-v3.appspot.com",
+  messagingSenderId: "717415814149",
+  appId: "1:717415814149:web:992815ffeae3bca17e386c",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="/Controller/triva-thanks.js"></script>
+
+
 </body>
 </html>
